@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Book List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">brand</th>
+                <th scope="col">model</th>
+                <!-- <th scope="col">Year</th>
+                <th scope="col">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.Id }}</td>
+                <td>{{ book.brand }}</td>
+                <td>{{ book.model }}</td>
+                <!-- <td>{{ book.year }}</td> -->
+                <td><a type="button" class="btn btn-warning" href="/book-update/{{ book.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/book-delete/{{ book.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'book-create' %}">Create</a>
+</div>
+{% endblock %}
